@@ -8,6 +8,8 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  // ESTE ES UN EJEMPLO DE NAVEGACION POR TABS O NAVEGACION POR BARRA VERTICAL DEBAJO DE LA VISTA
+
   return (
     <Tabs
       screenOptions={{

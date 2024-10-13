@@ -9,6 +9,8 @@ import Animated, {
 
 import { ThemedText } from '@/components/ThemedText';
 
+// COMPONENTE QUE SE OCUPA COMO UNA ANIMACION DE SALUDO, DIVERTIDA AL INICO DE CARGA DE LA APLICACION
+
 export function HelloWave() {
   const rotationAnimation = useSharedValue(0);
 

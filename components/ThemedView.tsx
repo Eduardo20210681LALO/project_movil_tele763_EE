@@ -12,3 +12,6 @@ export function ThemedView({ style, lightColor, darkColor, ...otherProps }: Them
 
   return <View style={[{ backgroundColor }, style]} {...otherProps} />;
 }
+
+
+// DETECTA QUE TEMA CONTIENE EL DISPOSITIVO CLARO O OSCURO, DEPENDIENDO DEL TIPO SE DEFINE EL THEMEWIEW

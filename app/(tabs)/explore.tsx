@@ -7,6 +7,8 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+// ESTE ES UN EJEMPLO DE UN TSX COMO VISTA, QUE ACOMPAÑA A INDEX
+
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView

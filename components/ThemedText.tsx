@@ -2,6 +2,9 @@ import { Text, type TextProps, StyleSheet } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 
+// ARCHIVO DONDE DEFINE LOS COMPONENTES, COLORES Y TAMAÑOS NBEGRITAS O NO
+// DE LOS TITULOS, SEMITITULOS Y LOS SUBTITULOS ASI COMO EL TIPO DE DISEÑO DEL LINKS
+
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;

@@ -4,6 +4,8 @@ import { StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+// ARCHIVO  DE RENDERIZADO COMO 404
+
 export default function NotFoundScreen() {
   return (
     <>

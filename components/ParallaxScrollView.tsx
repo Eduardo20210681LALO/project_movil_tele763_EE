@@ -9,6 +9,8 @@ import Animated, {
 
 import { ThemedView } from '@/components/ThemedView';
 
+// ARCHIVO PARA PODER PRESENTAR UNA ANIMACION O PRESENTACIOND E ALUNGA IMAGEB, LOGO,BANER ARRIBA DEL CONTENT DE LA VISTA
+
 const HEADER_HEIGHT = 250;
 
 type Props = PropsWithChildren<{

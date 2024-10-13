@@ -10,6 +10,8 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+// ARCHIVO PRINCIPAL DE NAVEGACION DE LA APLICACION DE MANERA GENERAL
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
