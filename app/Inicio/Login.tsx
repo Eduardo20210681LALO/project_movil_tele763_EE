@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Animated } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { TextInput, Card, Text } from 'react-native-paper';
@@ -8,7 +8,7 @@ import { SelectOptions } from '@/components/SelectOptions';
 import { useRouter } from 'expo-router';
 
 export default function Login() {
-    const router = useRouter(); 
+    const router = useRouter();
     
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ export default function Login() {
     };
 
     const handleLogin = () => {
-        console.log('Se redirigira a registro xd')
+        console.log('Se redirigira a registro')
         router.push('/Inicio/Registro');
     };
 
@@ -39,7 +39,7 @@ export default function Login() {
                 <Card>
                     <Card.Content>
                         <ThemedText type="title" style={styles.title}>
-                            Bienvenido
+                            Inicio de Sesión
                         </ThemedText>
 
                         <ThemedText type="defaultSemiBold" style={styles.subtitle}>
