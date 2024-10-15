@@ -7,7 +7,8 @@ import { ThemedText } from '@/components/ThemedText';
 import { SelectOptions } from '@/components/SelectOptions';
 import { useRouter } from 'expo-router';
 
-export default function Login() {
+export default function login() {
+
     const router = useRouter();
     
     const [usuario, setUsuario] = useState('');
@@ -32,6 +33,7 @@ export default function Login() {
         { key: '2', value: 'Administrativo' },
         { key: '3', value: 'Docente' },
     ];
+
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#f0f0f0' }}>

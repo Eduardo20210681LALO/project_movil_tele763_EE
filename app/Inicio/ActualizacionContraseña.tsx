@@ -1,7 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, StyleSheet, ScrollView, Animated } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { TextInput, Card, Text } from 'react-native-paper';
+import { ThemedText } from '@/components/ThemedText';
+import { useRouter } from 'expo-router';
 
-export default function EstadisticasIndividual() {
+export default function ActualizacionContraseña() {
     return (
         <View style={styles.container}>
         <Text style={styles.text}>Perfil Usuario</Text>

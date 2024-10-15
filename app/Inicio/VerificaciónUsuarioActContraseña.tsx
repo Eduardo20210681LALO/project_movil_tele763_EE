@@ -4,35 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { TextInput, Card, Text } from 'react-native-paper';
 import { ThemedText } from '@/components/ThemedText';
-import { SelectOptions } from '@/components/SelectOptions';
 import { useRouter } from 'expo-router';
 
-export default function Login() {
+export default function VerificaciónUsuarioActContraseña() {
     const router = useRouter();
     
-    const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [mostrarContrasenia, setMostrarContrasenia] = useState(false);
-
-    const [bloqueado, setBloqueado] = useState(false);
-    const [tiempoRestante, setTiempoRestante] = useState(0);
-
-    const toggleMostrarContrasenia = () => {
-        setMostrarContrasenia(!mostrarContrasenia);
-    };
+    const [telefono, setTelefono] = useState('');
 
     const handleLogin = () => {
-        console.log('Se redirigira')
-        router.push('/Inicio/ActualizacionContraseña');
+      
     };
-
-    const items = [
-        { key: '1', value: 'Directivo' },
-        { key: '2', value: 'Administrativo' },
-        { key: '3', value: 'Docente' },
-    ];
-
+    
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#f0f0f0' }}>
             <View style={styles.container}>
@@ -46,13 +29,7 @@ export default function Login() {
                             Por favor, inicie sesión para continuar
                         </ThemedText>
 
-                        {/* Uso del componente SelectOptions */}
-                        <SelectOptions
-                            label="Tipo de usuario"
-                            items={items}
-                            selectedValue={usuario}
-                            setSelected={setUsuario}
-                        />
+                       
 
                         {/* Correo electrónico */}
                         <View style={styles.inputContainer}>
@@ -65,50 +42,28 @@ export default function Login() {
                             />
                         </View>
 
-                        {/* Contraseña */}
-                        <View style={styles.inputContainer}>
-                            <TextInput
-                                label="Contraseña"
-                                placeholder="Ingrese su contraseña"
-                                mode="outlined"
-                                secureTextEntry={!mostrarContrasenia}
-                                value={password}
-                                onChangeText={setPassword}
-                                right={
-                                <TextInput.Icon
-                                    icon={() => (
-                                    <FontAwesomeIcon
-                                        icon={mostrarContrasenia ? faEyeSlash : faEye}
-                                        size={20}
-                                        color="#666"
-                                    />
-                                    )}
-                                    onPress={toggleMostrarContrasenia}
-                                />
-                                }
-                            />
-                        </View>
-
+                      
                         <TouchableOpacity
                             style={styles.loginButton}
-                            onPress={handleLogin}
+                            onPress={handleLogin} // Mantén la acción del botón
                             >
                             <Text style={styles.loginButtonText}>
                                 Iniciar Sesión
                             </Text>
                         </TouchableOpacity>
 
+
                         <View style={styles.centerText}>
                             <Text style={styles.text}>¿No tienes cuenta?</Text>
-                            <TouchableOpacity onPress={() => router.push('/Inicio/Registro')}>
-                                <Text style={[styles.text, styles.link]}>Regístrate</Text>
+                            <TouchableOpacity>
+                                <Text style={[styles.text, styles.link]}> Regístrate</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.centerText}>
                             <Text style={styles.text}>¿Olvidaste tu contraseña?</Text>
-                            <TouchableOpacity onPress={() => router.push('/Inicio/VerificaciónUsuarioActContraseña')}>
-                                <Text style={[styles.text, styles.link]}>Actualizala</Text>
+                            <TouchableOpacity>
+                                <Text style={[styles.text, styles.link]}> Recuperar</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -116,7 +71,7 @@ export default function Login() {
                 </Card>
             </View>
         </ScrollView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({

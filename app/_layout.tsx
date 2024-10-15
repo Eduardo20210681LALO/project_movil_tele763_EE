@@ -26,7 +26,7 @@ export default function RootLayout() {
   }
 
   // Rutas donde no quieres aplicar el ThemeProvider
-  const noThemeRoutes = ['/Inicio/Login', '/Inicio/Registro'];
+  const noThemeRoutes = ['/Inicio/Login', '/Inicio/Registro', '/Inicio/ActualizacionContraseña', '/Inicio/VerificaciónUsuarioActContraseña'];
   const isNoThemeRoute = noThemeRoutes.includes(pathname);
 
   // Aplica el ThemeProvider solo si no estamos en las rutas de login/registro
@@ -36,6 +36,9 @@ export default function RootLayout() {
       <Stack.Screen name="+not-found" />
       <Stack.Screen name="Inicio/Login" />
       <Stack.Screen name="Inicio/Registro" />
+      <Stack.Screen name="Inicio/ActualizacionContraseña" />
+      <Stack.Screen name="Inicio/VerificaciónUsuarioActContraseña" />
+
       {/* Pantallas Iniciales dentro de la App Docentes */}
       <Stack.Screen name="Inicio/InicioDocente/HomeDocente" />
       <Stack.Screen name="Inicio/InicioDocente/Alumnos/CapturarCalificaciones" />
@@ -46,7 +49,7 @@ export default function RootLayout() {
       <Stack.Screen name="Inicio/InicioDocente/Usuario/PerfilUsuario" />
     </Stack>
   );
-
+  
   // Solo aplica el ThemeProvider si no estás en rutas sin tema (login, registro)
   return isNoThemeRoute ? Content : (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
