@@ -26,12 +26,31 @@ export default function TabLayout() {
       <Tabs.Screen
         name="login"
         options={{
-          title: 'login',
+          title: 'Login',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'log-in' : 'log-in-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="DatosUsuario"
+        options={{
+          title: 'Verificacion',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'shield-checkmark' : 'shield-checkmark-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="ActContraUsuario"
+        options={{
+          title: 'Actualización',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'sync' : 'sync-outline'} color={color} />
           ),
         }}
       />
     </Tabs>
   );
+  
 }
