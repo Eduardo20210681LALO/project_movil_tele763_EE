@@ -1,56 +1,27 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { usePathname } from 'expo-router';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+    // Obtener la ruta actual
+    const pathname = usePathname();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="login"
-        options={{
-          title: 'Login',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'log-in' : 'log-in-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="DatosUsuario"
-        options={{
-          title: 'Verificacion',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'shield-checkmark' : 'shield-checkmark-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="ActContraUsuario"
-        options={{
-          title: 'Actualización',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'sync' : 'sync-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
-  
+    return (
+        <Tabs
+            screenOptions={{
+                // Ocultar el header en todas las pantallas
+                headerShown: false,
+                // Mostrar u ocultar el TabBar según la pantalla
+                tabBarStyle: pathname === '/index' ? { display: 'none' } : {},
+            }}>
+            <Tabs.Screen
+                name="index"
+                options={{
+                    title: 'Inicio',
+                    // Ocultar la Tab Bar para index
+                    tabBarStyle: { display: 'none' }, // Se oculta en esta pantalla
+                }}
+            />
+        </Tabs>
+    );
 }

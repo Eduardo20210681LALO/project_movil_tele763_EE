@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function HomeDocente() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Perfil Usuario</Text>
+            <Text style={styles.text}>Incio dentro docente</Text>
         </View>
     );
 }

@@ -23,8 +23,8 @@ export default function Login() {
     };
 
     const handleLogin = () => {
-        console.log('Se redirigira')
-        router.push('/Inicio/ActualizacionContraseña');
+        console.log('Se redirigira a home')
+        router.push('/Inicio/InicioDocente/HomeDocente');
     };
 
     const items = [
@@ -107,7 +107,7 @@ export default function Login() {
 
                         <View style={styles.centerText}>
                             <Text style={styles.text}>¿Olvidaste tu contraseña?</Text>
-                            <TouchableOpacity onPress={() => router.push('/Inicio/VerificaciónUsuarioActContraseña')}>
+                            <TouchableOpacity onPress={() => router.push('/Inicio/VerificacionDUsuario')}>
                                 <Text style={[styles.text, styles.link]}>Actualizala</Text>
                             </TouchableOpacity>
                         </View>
