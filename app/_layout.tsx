@@ -39,14 +39,6 @@ export default function RootLayout() {
             <Stack.Screen name="Inicio/VerificacionDUsuario" />
             <Stack.Screen name="Inicio/ActualizacionDUsuario" />
             
-            {/* Pantallas Iniciales dentro de la App Docentes */}
-            <Stack.Screen name="Inicio/InicioDocente/HomeDocente" />
-            <Stack.Screen name="Inicio/InicioDocente/Alumnos/CapturarCalificaciones" />
-            <Stack.Screen name="Inicio/InicioDocente/Alumnos/VisualizarAlumnos" />
-            <Stack.Screen name="Inicio/InicioDocente/Alumnos/VisualizarCalificaciones" />
-            <Stack.Screen name="Inicio/InicioDocente/Estadisticas/EstadisticasGrupal" />
-            <Stack.Screen name="Inicio/InicioDocente/Estadisticas/EstadisticasIndividual" />
-            <Stack.Screen name="Inicio/InicioDocente/Usuario/PerfilUsuario" />
         </Stack>
     );
   

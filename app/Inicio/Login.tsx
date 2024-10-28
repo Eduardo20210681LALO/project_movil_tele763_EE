@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, StyleSheet, ScrollView, Animated } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { TextInput, Card, Text } from 'react-native-paper';
 import { ThemedText } from '@/components/ThemedText';
-import { SelectOptions } from '@/components/SelectOptions';
 import { useRouter } from 'expo-router';
+
+import Toast from 'react-native-toast-message';
+
 
 export default function Login() {
     const router = useRouter();
-    
-    const [usuario, setUsuario] = useState('');
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [mostrarContrasenia, setMostrarContrasenia] = useState(false);
@@ -24,14 +25,52 @@ export default function Login() {
 
     const handleLogin = () => {
         console.log('Se redirigira a home')
-        router.push('/Inicio/InicioDocente/HomeDocente');
+        router.push('/Inicio/DrawerNavigator');
     };
 
-    const items = [
-        { key: '1', value: 'Directivo' },
-        { key: '2', value: 'Administrativo' },
-        { key: '3', value: 'Docente' },
-    ];
+    // aqui ira el procedimiento del login
+
+    const Validacion = async () => {
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!email) {
+            Toast.show({
+                type: 'info',
+                text1: 'Advertencia',
+                text2: 'Por favor, ingrese un correo electrónico.',
+                position: 'bottom',
+                bottomOffset: 350,
+                visibilityTime: 3000,
+            });
+            return;
+        }
+        if (!gmailRegex.test(email)) {
+            Toast.show({
+                type: 'info',
+                text1: 'Advertencia',
+                text2: 'Por favor, ingrese un correo electrónico de Gmail válido.',
+                position: 'bottom',
+                bottomOffset: 350,
+                visibilityTime: 3000,
+            });
+            return;
+        }
+        if (!password) {
+            Toast.show({
+                type: 'info',
+                text1: 'Advertencia',
+                text2: 'Por favor, ingrese una contraseña.',
+                position: 'bottom',
+                bottomOffset: 350,
+                visibilityTime: 3000,
+            });
+            return;
+        }
+
+        await handleLogin();
+    };
+    
+
+ 
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#f0f0f0' }}>
@@ -46,23 +85,18 @@ export default function Login() {
                             Por favor, inicie sesión para continuar
                         </ThemedText>
 
-                        {/* Uso del componente SelectOptions */}
-                        <SelectOptions
-                            label="Tipo de usuario"
-                            items={items}
-                            selectedValue={usuario}
-                            setSelected={setUsuario}
-                        />
-
+                  
                         {/* Correo electrónico */}
                         <View style={styles.inputContainer}>
-                            <TextInput
-                                label="Correo Electrónico"
-                                placeholder="Ingrese su correo electrónico"
-                                mode="outlined"
-                                value={email}
-                                onChangeText={setEmail}
-                            />
+                        <TextInput
+                            label="Correo Electrónico"
+                            placeholder="Ingrese su correo electrónico"
+                            mode="outlined"
+                            value={email}
+                            onChangeText={setEmail}
+                            keyboardType="email-address" // Configura el teclado para correo electrónico
+                        />
+
                         </View>
 
                         {/* Contraseña */}
@@ -91,11 +125,12 @@ export default function Login() {
 
                         <TouchableOpacity
                             style={styles.loginButton}
-                            onPress={handleLogin}
+                            onPress={Validacion}
                             >
                             <Text style={styles.loginButtonText}>
                                 Iniciar Sesión
                             </Text>
+                            <Toast />
                         </TouchableOpacity>
 
                         <View style={styles.centerText}>
