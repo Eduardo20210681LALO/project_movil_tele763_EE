@@ -37,15 +37,11 @@ export default function Registro() {
             <View style={styles.container}>
                 <Card>
                     <Card.Content>
-                        <ThemedText type="title" style={styles.title}>
-                            Registro
-                        </ThemedText>
+                        {/* Verifica el componente <ThemedText> */}
+                        <ThemedText type="title" style={styles.title}>Registro</ThemedText>
+                        <ThemedText type="defaultSemiBold" style={styles.subtitle}>Ingrese los datos correspondientes</ThemedText>
 
-                        <ThemedText type="defaultSemiBold" style={styles.subtitle}>
-                            Ingrese los datos correspondientes
-                        </ThemedText>
-
-                        {/*Nombre*/}
+                        {/* Nombre */}
                         <View style={styles.inputContainer}>
                             <TextInput
                                 label="Nombre"
@@ -56,7 +52,8 @@ export default function Registro() {
                             />
                         </View>
 
-                        {/*Apellido Paterno*/}
+                        {/* Verifica el funcionamiento correcto de cada <TextInput> */}
+                        {/* Apellido Paterno */}
                         <View style={styles.inputContainer}>
                             <TextInput
                                 label="Apellido Paterno"
@@ -67,7 +64,7 @@ export default function Registro() {
                             />
                         </View>
 
-                        {/*Apellido Materno*/}
+                        {/* Apellido Materno */}
                         <View style={styles.inputContainer}>
                             <TextInput
                                 label="Apellido Materno"
@@ -78,7 +75,7 @@ export default function Registro() {
                             />
                         </View>
 
-                        {/*Usuario*/}
+                        {/* Usuario */}
                         <View style={styles.inputContainer}>
                             <TextInput
                                 label="Usuario"
@@ -89,7 +86,7 @@ export default function Registro() {
                             />
                         </View>
 
-                        {/*Correo*/}
+                        {/* Correo */}
                         <View style={styles.inputContainer}>
                             <TextInput
                                 label="Correo Electrónico"
@@ -160,15 +157,11 @@ export default function Registro() {
                             />
                         </View>
 
-                        <TouchableOpacity
-                            style={styles.RegisterButton}
-                            onPress={RegistrarUsuario}
-                        >
-                            <Text style={styles.RegisterButtonText}>
-                                Registrarse
-                            </Text>
+                        <TouchableOpacity style={styles.RegisterButton} onPress={RegistrarUsuario}>
+                            <Text style={styles.RegisterButtonText}>Registrarse</Text>
                         </TouchableOpacity>
 
+                        {/* Texto de enlace */}
                         <View style={styles.centerText}>
                             <Text style={styles.text}>¿Ya tienes cuenta?</Text>
                             <TouchableOpacity onPress={() => router.push('/Inicio/Login')}>
@@ -180,6 +173,7 @@ export default function Registro() {
                 </Card>
             </View>
         </ScrollView>
+
     )
 }
 

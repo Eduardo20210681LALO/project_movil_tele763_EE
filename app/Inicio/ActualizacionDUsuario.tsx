@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function ActualizacionDUsuario() {
     return (
         <View style={styles.container}>
-        <Text style={styles.text}>Actualizar Datos Uusario</Text>
+            <Text style={styles.text}>Actualizar Datos Uusario</Text>
         </View>
     );
 }

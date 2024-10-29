@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function VerificacionDUsuario() {
     return (
         <View style={styles.container}>
-        <Text style={styles.text}>Verificacion Usuario</Text>
+            <Text style={styles.text}>Verificacion Usuario</Text>
         </View>
     );
 }

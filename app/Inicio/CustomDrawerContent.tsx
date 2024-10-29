@@ -126,6 +126,7 @@ export default function CustomDrawerContent(props: DrawerContentComponentProps) 
                 <Ionicons name="log-out-outline" size={20} color="black" />
                 <Text style={styles.drawerLabel}>Cerrar Sesión</Text>
             </TouchableOpacity>
+            
         </DrawerContentScrollView>
     );
 }
