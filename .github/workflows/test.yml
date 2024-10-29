@@ -108,6 +108,7 @@ jobs:
           --data '{"text":"✅ Build succeeded Job: build-and-test en la rama: ${{ github.ref_name }} "}' \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
+
 # Fragmento para enviar la notificación a Slack
   notify_test:
     runs-on: ubuntu-latest
