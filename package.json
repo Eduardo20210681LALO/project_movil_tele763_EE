@@ -8,7 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "react-scripts test",
+    "test": "jest --watchAll",
     "lint": "expo lint"
   },
   "jest": {
