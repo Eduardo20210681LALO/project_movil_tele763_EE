@@ -1,13 +1,21 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { PropsWithChildren, useState } from 'react';
-import { StyleSheet, TouchableOpacity, useColorScheme, Text } from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  useColorScheme,
+  Text,
+} from 'react-native';
 
 import { ThemedView } from '@/components/ThemedView';
 import { Colors } from '@/constants/Colors';
 
 // ARCHIVO DE CONTROL DEL COMPONENTE QUE CONTRAE LA INFORMACIÓN EN CONJUNTO CON EL ICONO
 
-export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
+export function Collapsible({
+  children,
+  title,
+}: PropsWithChildren & { title: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useColorScheme() ?? 'light';
 
@@ -26,7 +34,7 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
         <Text
           style={[
             styles.title,
-            { color: theme === 'light' ? Colors.light.text : Colors.dark.text }
+            { color: theme === 'light' ? Colors.light.text : Colors.dark.text },
           ]}
         >
           {title}

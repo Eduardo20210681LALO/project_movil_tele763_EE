@@ -2,54 +2,64 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Login from './app/Inicio/Login';
 
-jest.mock('expo-router', () => ({ // Mock de expo-router
-    useRouter: jest.fn(() => ({
-        push: jest.fn(),
-    })),
+jest.mock('expo-router', () => ({
+  // Mock de expo-router
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+  })),
 }));
 
-
-jest.mock('@react-native-async-storage/async-storage', () => ({ // Mock de AsyncStorage
-    setItem: jest.fn(),
-    getItem: jest.fn(),
-    removeItem: jest.fn(),
+jest.mock('@react-native-async-storage/async-storage', () => ({
+  // Mock de AsyncStorage
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+  removeItem: jest.fn(),
 }));
 
-
-jest.mock('react-native-toast-message', () => ({ // Mock de react-native-toast-message
-    show: jest.fn(),
-    Toast: () => null,
+jest.mock('react-native-toast-message', () => ({
+  // Mock de react-native-toast-message
+  show: jest.fn(),
+  Toast: () => null,
 }));
 
+jest.mock('react-native-paper', () => {
+  // Mock de react-native-paper
+  const React = require('react');
+  const { View, TextInput, Text } = require('react-native');
+  const Card = ({ children }) => <View>{children}</View>;
+  Card.Content = ({ children }) => <View>{children}</View>;
 
-jest.mock('react-native-paper', () => { // Mock de react-native-paper
-    const React = require('react');
-    const { View, TextInput, Text } = require('react-native');
-    const Card = ({ children }) => <View>{children}</View>;
-    Card.Content = ({ children }) => <View>{children}</View>;
+  const MockTextInput = ({
+    label,
+    placeholder,
+    value,
+    onChangeText,
+    right,
+  }) => (
+    <View>
+      <Text>{label}</Text>
+      <TextInput
+        placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+      />
+      {right && right.icon && right.icon()}
+    </View>
+  );
 
-    const MockTextInput = ({ label, placeholder, value, onChangeText, right }) => (
-        <View>
-        <Text>{label}</Text>
-        <TextInput placeholder={placeholder} value={value} onChangeText={onChangeText} />
-        {right && right.icon && right.icon()}
-        </View>
-    );
-  
-    MockTextInput.Icon = () => <View />;
+  MockTextInput.Icon = () => <View />;
 
-    return {
-        TextInput: MockTextInput,
-        Card,
-        Text,
-    };
+  return {
+    TextInput: MockTextInput,
+    Card,
+    Text,
+  };
 });
 
 // Mock de FontAwesomeIcon
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
-    FontAwesomeIcon: () => <></>,
+  FontAwesomeIcon: () => <></>,
 }));
-
 
 // EMPIEZAN LAS PRUEBAS EN
 describe('Login renderizado', () => {

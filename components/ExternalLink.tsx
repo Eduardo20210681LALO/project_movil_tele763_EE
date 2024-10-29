@@ -16,7 +16,7 @@ export function ExternalLink({ href, ...rest }: Props) {
       await openBrowserAsync(href);
     }
   };
-  
+
   return (
     <TouchableOpacity onPress={handlePress}>
       <Text style={{ color: 'blue' }}>{rest.children}</Text>

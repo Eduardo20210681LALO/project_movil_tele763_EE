@@ -15,7 +15,10 @@ export function HelloWave() {
   const theme = useColorScheme() ?? 'light';
 
   rotationAnimation.value = withRepeat(
-    withSequence(withTiming(25, { duration: 150 }), withTiming(0, { duration: 150 })),
+    withSequence(
+      withTiming(25, { duration: 150 }),
+      withTiming(0, { duration: 150 })
+    ),
     4 // Ejecuta la animación 4 veces
   );
 
@@ -25,7 +28,12 @@ export function HelloWave() {
 
   return (
     <Animated.View style={animatedStyle}>
-      <Text style={[styles.text, { color: theme === 'light' ? Colors.light.text : Colors.dark.text }]}>
+      <Text
+        style={[
+          styles.text,
+          { color: theme === 'light' ? Colors.light.text : Colors.dark.text },
+        ]}
+      >
         👋
       </Text>
     </Animated.View>
