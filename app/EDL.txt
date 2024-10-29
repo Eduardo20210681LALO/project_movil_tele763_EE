@@ -1,1 +1,11 @@
 Este archivo es para hacer commit de prueba
+
+git pull -b feautre-branches (Link del repositorio)
+comandos para agregar nuevos cambios al codigo local
+
+Primero, asegúrate de que la rama feature-branches exista en tu repositorio local. Puedes verificar las ramas existentes usando:
+code: git branch
+
+
+Para cambiar a una rama existente, utiliza el siguiente comando:
+code: git checkout nombre-de-la-rama
