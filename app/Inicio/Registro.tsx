@@ -3,7 +3,6 @@ import { View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { TextInput, Card, Text } from 'react-native-paper';
-import { ThemedText } from '@/components/ThemedText';
 import { useRouter } from 'expo-router';
 
 export default function Registro() {
@@ -38,8 +37,14 @@ export default function Registro() {
                 <Card>
                     <Card.Content>
                         {/* Verifica el componente <ThemedText> */}
-                        <ThemedText type="title" style={styles.title}>Registro</ThemedText>
-                        <ThemedText type="defaultSemiBold" style={styles.subtitle}>Ingrese los datos correspondientes</ThemedText>
+                        <TextInput
+                            style={styles.title}
+                            placeholder="Registro"
+                        />
+                        <Text style={styles.subtitle}>
+                            Ingrese los datos correspondientes
+                        </Text>
+
 
                         {/* Nombre */}
                         <View style={styles.inputContainer}>

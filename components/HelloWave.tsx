@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, useColorScheme } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -6,17 +6,17 @@ import Animated, {
   withRepeat,
   withSequence,
 } from 'react-native-reanimated';
+import { Colors } from '@/constants/Colors';
 
-import { ThemedText } from '@/components/ThemedText';
-
-// COMPONENTE QUE SE OCUPA COMO UNA ANIMACION DE SALUDO, DIVERTIDA AL INICO DE CARGA DE LA APLICACION
+// COMPONENTE QUE SE OCUPA COMO UNA ANIMACIÓN DE SALUDO, DIVERTIDA AL INICIO DE CARGA DE LA APLICACIÓN
 
 export function HelloWave() {
   const rotationAnimation = useSharedValue(0);
+  const theme = useColorScheme() ?? 'light';
 
   rotationAnimation.value = withRepeat(
     withSequence(withTiming(25, { duration: 150 }), withTiming(0, { duration: 150 })),
-    4 // Run the animation 4 times
+    4 // Ejecuta la animación 4 veces
   );
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -25,7 +25,9 @@ export function HelloWave() {
 
   return (
     <Animated.View style={animatedStyle}>
-      <ThemedText style={styles.text}>👋</ThemedText>
+      <Text style={[styles.text, { color: theme === 'light' ? Colors.light.text : Colors.dark.text }]}>
+        👋
+      </Text>
     </Animated.View>
   );
 }
