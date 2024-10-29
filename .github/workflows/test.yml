@@ -108,23 +108,23 @@ jobs:
           --data '{"text":"✅ Build succeeded Job: build-and-test en la rama: ${{ github.ref_name }} "}' \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
-  # Notificación del Pull Request
-  notify_pr_comment:
+# Fragmento para enviar la notificación a Slack
+  notify_test:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    needs: build-and-test
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Notificación cuando falla la prueba
+      - name: Send Slack notification on failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"🚨 Build failed Job: build-and-test en la rama: ${{ github.ref_name }} "}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
 
-      - name: Add comment on PR
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { context } = require('@actions/github');
-            github.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "🚀 ¡El Pull Request ha sido actualizado! Revisa los últimos cambios."
-            });
+      - name: Send Slack notification on success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ Build succeeded Job: build-and-test en la rama: ${{ github.ref_name }} "}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
