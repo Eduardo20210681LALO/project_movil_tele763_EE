@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:16  # Cambia a la versión de Node.js que necesitas
+
+    steps:
+      - checkout  # Verifica el código fuente
+
+      - run:
+          name: Instalar dependencias
+          command: npm install
+
+      - run:
+          name: Compilar TypeScript
+          command: npm run build  # Asegúrate de tener un script de build en tu package.json
+
+      - run:
+          name: Ejecutar pruebas en módulo específico
+          command: npm test Registro.test.ts -- --coverage  # Cambia esto al nombre de tu archivo de pruebas
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
