@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - '14'
+
+branches:
+  only:
+    - feature/*
+
+install:
+  - npm install
+
+script:
+  - npm test
+
+notifications:
+  email:
+    recipients:
+      - tuemail@ejemplo.com  # Cambia esto a tu correo electrónico para recibir notificaciones
+    on_success: always
+    on_failure: always
