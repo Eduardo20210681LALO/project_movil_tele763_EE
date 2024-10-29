@@ -24,4 +24,8 @@ workflows:
   version: 2
   test:
     jobs:
-      - test
+      - test:
+          filters:
+            branches:
+              only:
+                - feature-branches  # Asegúrate de que el flujo solo se ejecute en la rama feature-branches
