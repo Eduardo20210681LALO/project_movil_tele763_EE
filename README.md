@@ -4,47 +4,58 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Get started
 
+***instalar las dependencias***
+
 1. Install dependencies
 
    ```bash
-   npm install
+      npm install
    ```
 
-2. Start the app
+2. Ejecutar el proyecto:
 
    ```bash
-    npx expo start
+      npm start
    ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+***Flujo de Trabajo***
+1. **Crear una nueva rama** para cada funcionalidad o tarea específica.
 ```bash
-npm run reset-project
+git checkout -b feature/branches o alguna otro nombre en especifico.
+```
+2. **Hacer commits** frecuentes de los cambios.
+```bash
+git add .
+git commit -m "Descripción del cambio realizado"
+```
+3. **Abrir un pull request** para revisión de código por otro miembro del equipo.
+```bash
+git checkout main
+```
+4. **Integrar la rama** en `main` después de que las pruebas automáticas pasen y el código sea aprobado.
+```bash
+git merge feature/branches u otro nombre de la funcionalidad creada.
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Instrucciones para Contribuir
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- # [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. **Clonar el repositorio**: Esto descargará una copia del código fuente en tu máquina local.
+```bash
+git clone https://github.com/Eduardo20210681LALO/project_movil_tele763_EE
+```
+2. **Entrar en el directorio del proyecto**: Accede al directorio clonado donde está el código del proyecto.
+```bash
+cd proyecto_movil_tele763_EE
+```
+3. **Instalar dependencias**: Esto instalará todas las dependencias necesarias del proyecto especificadas en package.json.
+```bash
+npm install
+```
+4. **Ejecutar el proyecto en modo desarrollo**: Inicia el servidor en modo desarrollo. Esto te permitirá ver la aplicación en tiempo real y se recargará automáticamente cuando realices cambios en el código.
+```bash
+npm start
+```
+5. **Ejecutar las pruebas**: Corre las pruebas automatizadas del proyecto para asegurarse de que todo funcione correctamente.
+```bash
+npm run test
+```
