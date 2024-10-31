@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { TextInput, Card, Text } from 'react-native-paper';
 import { useRouter } from 'expo-router';
-import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { UserContext } from '../DrawerScreens/UserContext';
 
@@ -28,17 +27,24 @@ export default function Login() {
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ usuario, password }),
+          body: JSON.stringify({ usuario, email, password }),
         }
       );
-
+  
       if (response.ok) {
         const data = await response.json();
+        console.log('Respuesta del servidor:', data);
+  
         if (data.success) {
+          console.log('Ya entró a data.success');
+  
+          // Guarda los valores en AsyncStorage y luego imprime un mensaje de confirmación
           await AsyncStorage.setItem('user_id', data.id_usuario.toString());
+          console.log('user_id almacenado en AsyncStorage:', data.id_usuario.toString());
+  
           await AsyncStorage.setItem('auth_token', data.token);
-
-          // Ahora `setUser` debería funcionar correctamente
+          console.log('auth_token almacenado en AsyncStorage:', data.token);
+  
           setUser({ id_usuario: data.id_usuario, token: data.token });
           router.push('/Inicio/DrawerNavigator');
         } else {
@@ -51,81 +57,42 @@ export default function Login() {
       console.error('Error en el catch:', error);
     }
   };
-
+  
+  
   const Validacion = async () => {
     const usuarioRegex = /^[a-zA-Z0-9]+$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#\$%&])[A-Za-z\d#\$%&]+$/;
-
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#\$%&])[A-Za-z\d#\$%&]+$/;
+  
     if (!usuario) {
-      Toast.show({
-        type: 'info',
-        text1: 'Advertencia',
-        text2: 'Por favor, ingrese un nombre de usuario.',
-        position: 'bottom',
-        bottomOffset: 350,
-        visibilityTime: 3000,
-      });
+      console.log('Por favor, ingrese un nombre de usuario.');
       return;
     }
     if (!email) {
-      Toast.show({
-        type: 'info',
-        text1: 'Advertencia',
-        text2: 'Por favor, ingrese un correo electrónico.',
-        position: 'bottom',
-        bottomOffset: 350,
-        visibilityTime: 3000,
-      });
+      console.log('Por favor, ingrese un correo electrónico.');
       return;
     }
     if (!password) {
-      Toast.show({
-        type: 'info',
-        text1: 'Advertencia',
-        text2: 'Por favor, ingrese una contraseña.',
-        position: 'bottom',
-        bottomOffset: 350,
-        visibilityTime: 3000,
-      });
+      console.log('Por favor, ingrese una contraseña.');
       return;
     }
     if (!usuarioRegex.test(usuario)) {
-      Toast.show({
-        type: 'info',
-        text1: 'Advertencia',
-        text2: 'El nombre de usuario no es válido.',
-        position: 'bottom',
-        bottomOffset: 350,
-        visibilityTime: 3000,
-      });
+      console.log('El nombre de usuario no es válido.');
       return;
     }
     if (!emailRegex.test(email)) {
-      Toast.show({
-        type: 'info',
-        text1: 'Advertencia',
-        text2: 'Por favor, ingrese un correo electrónico válido.',
-        position: 'bottom',
-        bottomOffset: 350,
-        visibilityTime: 3000,
-      });
+      console.log('Por favor, ingrese un correo electrónico válido.');
       return;
     }
     if (!passwordRegex.test(password)) {
-      Toast.show({
-        type: 'info',
-        text1: 'Advertencia',
-        text2: 'La contraseña no es válida.',
-        position: 'bottom',
-        bottomOffset: 350,
-        visibilityTime: 3000,
-      });
+      console.log('La contraseña no es válida.');
       return;
     }
+    
+    // Si la validación pasa, llama a `IniciarSesión`
     await IniciarSesión();
   };
+  
 
   return (
     <ScrollView

@@ -1,5 +1,5 @@
 import { Link, Stack } from 'expo-router';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 
 // ARCHIVO DE RENDERIZADO COMO 404
 
@@ -8,9 +8,9 @@ export default function NotFoundScreen() {
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />
       <View style={styles.container}>
-        <Text style={styles.title}>This screen doesn't exist.</Text>
+        <TextInput style={styles.title}>This screen doesn't exist.</TextInput>
         <Link href="/" style={styles.link}>
-          <Text style={styles.linkText}>Go to home screen!</Text>
+          <TextInput style={styles.linkText}>Go to home screen!</TextInput>
         </Link>
       </View>
     </>

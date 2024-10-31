@@ -1,14 +1,11 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
+import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { UserProvider } from './DrawerScreens/UserContext'; // Asegúrate de que la ruta sea correcta
+import { UserProvider } from './DrawerScreens/UserContext'; // Ajusta la ruta si es necesario
+import { View, Text } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,28 +36,26 @@ export default function RootLayout() {
   const isNoThemeRoute = noThemeRoutes.includes(pathname);
 
   const Content = (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="Inicio/Login" />
-      <Stack.Screen name="Inicio/Registro" />
-      <Stack.Screen name="Inicio/VerificacionDUsuario" />
-      <Stack.Screen name="Inicio/ActualizacionDUsuario" />
-      <Stack.Screen name="Inicio/DrawerNavigator" />
-    </Stack>
+    <View style={{ flex: 1 }}>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="Inicio/Login" />
+        <Stack.Screen name="Inicio/Registro" />
+        <Stack.Screen name="Inicio/VerificacionDUsuario" />
+        <Stack.Screen name="Inicio/ActualizacionDUsuario" />
+        <Stack.Screen name="Inicio/DrawerNavigator" />
+      </Stack>
+    </View>
   );
 
   return (
     <UserProvider>
-      {' '}
-      {/* Envolver en UserProvider para proporcionar el contexto a toda la aplicación */}
       {isNoThemeRoute ? (
         Content
       ) : (
-        <ThemeProvider
-          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-        >
+        <View style={{ flex: 1, backgroundColor: colorScheme === 'dark' ? DarkTheme.colors.background : DefaultTheme.colors.background }}>
           {Content}
-        </ThemeProvider>
+        </View>
       )}
     </UserProvider>
   );

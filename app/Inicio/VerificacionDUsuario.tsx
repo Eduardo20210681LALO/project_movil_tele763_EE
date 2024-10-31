@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
 export default function VerificacionDUsuario() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Verificacion Usuario</Text>
+      <TextInput style={styles.text}>Verificacion Usuario</TextInput>
     </View>
   );
 }

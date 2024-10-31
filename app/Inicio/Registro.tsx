@@ -40,7 +40,11 @@ export default function Registro() {
         <Card>
           <Card.Content>
             {/* Verifica el componente <ThemedText> */}
-            <TextInput style={styles.title} placeholder="Registro" />
+
+            <Text style={styles.subtitle}>
+              Registro
+            </Text>
+ 
             <Text style={styles.subtitle}>
               Ingrese los datos correspondientes
             </Text>

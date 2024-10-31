@@ -1,18 +1,18 @@
 // DrawerScreens/HomeDocentes.tsx
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, TextInput, StyleSheet, ScrollView } from 'react-native';
 
 export default function HomeDocentes() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Hola, Mundo</Text>
+      <TextInput style={styles.title}>Hola, Mundo</TextInput>
       <View style={styles.card}>
-        <Text style={styles.message}>
+        <TextInput style={styles.message}>
           ¡Bienvenido al ejemplo de "Hola, Mundo" en React Native!
-        </Text>
-        <Text style={styles.subMessage}>
+        </TextInput>
+        <TextInput style={styles.subMessage}>
           Este es un ejemplo simplificado que solo muestra texto en pantalla.
-        </Text>
+        </TextInput>
       </View>
     </ScrollView>
   );
