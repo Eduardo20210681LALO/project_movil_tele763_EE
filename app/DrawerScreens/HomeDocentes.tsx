@@ -16,6 +16,7 @@ export default function HomeDocentes() {
       </View>
     </ScrollView>
   );
+  
 }
 
 const styles = StyleSheet.create({
